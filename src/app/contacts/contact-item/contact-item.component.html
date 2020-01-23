@@ -1,1 +1,10 @@
-<p>contact-item works!</p>
+<div class="col-xs-12">
+    <a class="col-xs-12 list-group-item">
+        <div class="pull-left">
+            <h4>{{contact.name}}</h4>
+        </div>
+        <div class="pull-right">
+            <img [src]="contact?.imageUrl" alt="{{contact?.name}}" class="img-responsive" style="max-height: 50px;" *ngIf="contact?.imageUrl">
+        </div>
+    </a>
+</div>

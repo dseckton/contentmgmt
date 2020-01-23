@@ -3,27 +3,20 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-12 clearfix">
-                        <div class="pull-left">
-                            <h3>Contacts</h3>
+                    <div class="clearfix">
+                        <div class="col-xs-8">
+                            <h4>Contacts</h4>
                         </div>
-                        <div class="pull-right">
-                            <button class="btn btn-success">New Contact</button>
+                        <div class="col-xs-4">
+                            <button class="btn btn-success pull-right">New Contact</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="panel-group">
-                    <div class="row list-group" *ngFor="let contact of contacts">
-                        <div class="col-xs-12 clearfix list-group-item">
-                            <div class="pull-left">
-                                <h4>{{contact.name}}</h4>
-                            </div>
-                            <div class="pull-right">
-                                <img src="{{contact.imageUrl}}" alt="">
-                            </div>
-                        </div>
+                    <div class="row list-group">
+                        <cms-contact-item *ngFor="let contact of contacts" [contact]="contact" (click)="onSelected(contact)"></cms-contact-item>
                     </div>
                 </div>
             </div>
