@@ -7,7 +7,7 @@ import { Message } from '../message.model';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit {
-  @Input() 
+  // @Input() 
 
   messages: Message[] = [
     new Message('1', 'Is this thing on?', 'Ignore this, just testing.', 'Daniel Eckton'),
