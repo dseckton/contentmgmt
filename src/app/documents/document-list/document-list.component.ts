@@ -24,7 +24,6 @@ export class DocumentListComponent implements OnInit {
 
   onSelectedDocument(document: Document) {
     this.selectedDocumentEvent.emit(document);
-    console.log("HELP");
   }
 
 }
