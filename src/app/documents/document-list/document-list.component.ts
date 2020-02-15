@@ -9,12 +9,7 @@ import { DocumentsService } from '../documents.service';
 })
 export class DocumentListComponent implements OnInit {
 
-  documents: Document[] = [
-  //   new Document('1', 'Memes', 'A bunch of memes', 'google.com', null), 
-  //   new Document('2', 'Memes', 'A bunch of memes', 'google.com', null), 
-  //   new Document('3', 'Memes', 'A bunch of memes', 'google.com', null), 
-  //   new Document('4', 'Memes', 'A bunch of memes', 'google.com', null)
-  ];
+  documents: Document[] = [];
 
   // @Output() selectedDocumentEvent = new EventEmitter<Document>();
 
@@ -22,11 +17,7 @@ export class DocumentListComponent implements OnInit {
 
   ngOnInit() {
     this.documents = this.documentService.getDocuments();
-  }
-
-  onSelectedDocument(document: Document) {
-    this.documentService.documentSelectedEvent.emit(document);
-    console.log('help')
+    this.documentService.documentChangedEvent.subscribe((documents)=>{this.documents = documents});
   }
 
 }

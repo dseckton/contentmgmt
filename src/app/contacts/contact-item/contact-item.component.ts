@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contact } from '../contact.model';
+import { ContactService } from '../contact.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cms-contact-item',
@@ -12,6 +14,7 @@ export class ContactItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
