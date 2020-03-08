@@ -9,7 +9,12 @@ import { ContactService } from '../contact.service';
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[] = [];
+  term: string = "";
 
+  onKeyPress(value: string) {
+    this.term = value;
+    console.log(this.term);
+  }
 
   constructor(private contactService: ContactService) { }
 

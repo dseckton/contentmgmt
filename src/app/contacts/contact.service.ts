@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Contact } from './contact.model';
-import { MOCKCONTACTS } from './MOCKCONTACTS';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,9 @@ export class ContactService {
   contactListChangedEvent = new Subject<Contact[]>();
   contacts: Contact[] = [];
   maxContactId: number;
+  FBUrl: string = "https://cms-project-28f1e.firebaseio.com/contacts.json"
 
-  constructor() {
-    this.contacts = MOCKCONTACTS;
+  constructor(private http: HttpClient) {
     this.maxContactId = this.getMaxId();
   }
 
@@ -28,8 +28,18 @@ export class ContactService {
     return null;
   }
 
-  getContacts(): Contact[] {
-    return this.contacts.slice();
+  getContacts(): any {
+    // return this.contacts.slice();
+    this.http.get<Contact[]>(this.FBUrl).subscribe(
+      (contacts: Contact[]) => {
+        this.contacts = contacts;
+        console.log(contacts);
+        this.maxContactId = this.getMaxId();
+        this.contactListChangedEvent.next(contacts.slice())
+      }, (error: any) => {
+        console.log(`Crap ${error}`);
+      }
+    )
   }
 
   addContact(newContact: Contact) {
